@@ -19,8 +19,14 @@ function addElement() {
         name: siteName.value,
         url: siteUrl.value.toLowerCase(),
     }
-    if ( siteName.value === '' || siteUrl.value === ''  ) {
+    var x = validation();
+    if (siteName.value === '' && siteUrl.value === '') {
         siteNameInvalid.style.display = 'block';
+        siteURLInvalid.style.display = 'block';
+    } else if (siteName.value === '') {
+        siteNameInvalid.style.display = 'block';
+    }
+    else if (siteUrl.value === '') {
         siteURLInvalid.style.display = 'block';
     } else {
         allSites.push(sites);
@@ -86,4 +92,8 @@ function deleteElement(index) {
         localStorage.setItem('siteDetails', JSON.stringify(allSites));
         displayTheData();
     }
+}
+
+function validation() {
+
 }
